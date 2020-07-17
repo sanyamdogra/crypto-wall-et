@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: #344d5b; */
+  border-radius: 6px;
+  width: 70%;
+  /* padding: 1em; */
+  margin-bottom: 1em;
+}
+.addressLabel {
+  color: #73ef62;
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+}
+.privateKeyLabel {
+  color: red;
+  margin-bottom: 0.3em;
+  margin-top: 1.3em;
+}
+.address {
+  color: #89c9b8;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+.privateKey {
+  color: #89c9b8;
+  font-weight: 700;
+  word-wrap: break-word;
+  margin-bottom: 1em;
+}

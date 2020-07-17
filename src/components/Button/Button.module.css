@@ -1,0 +1,20 @@
+.button {
+    appearance: none;
+    height: max-content;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .button:hover {
+    transform: scale(1.05);
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+  
