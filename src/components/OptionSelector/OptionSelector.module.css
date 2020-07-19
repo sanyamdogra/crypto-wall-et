@@ -1,0 +1,28 @@
+.container {
+  background-color: #89c9b8;
+  border-radius: 20px;
+  height: 120px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.heading {
+  color: #092532;
+  font-weight: 700;
+  font-size: 20px;
+}
+.containerSelected{
+    background-color: #73ef62;
+    border-radius: 20px;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+

@@ -48,3 +48,6 @@
   font-size: 14px;
   margin-left: 0.5em;
 }
+.noLink{
+  text-decoration: none;
+}
