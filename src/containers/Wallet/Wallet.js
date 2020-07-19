@@ -12,13 +12,32 @@ const Wallet = (props) => {
     console.log(props.privateKey);
   };
 
+  const privateKeyHandler = async () => {
+    const add = loginPrivateKey(props.selectedNetwork.value, props.privateKey);
+    console.log(add);
+    props.setAddress(add.address);
+    let balance = await checkBalance(
+      props.selectedNetwork.value,
+      props.address
+    );
+    console.log(balance);
+    props.setBalance(balance);
+    setShowTransaction(true);
+  };
+
   const [showTransaction, setShowTransaction] = useState(false);
 
   return (
     <div className={styles.container}>
       <div className={styles.details}>
-        <div >Selected Network : </div>
+        <div>Selected Network : </div>
         <div className={styles.selectedOption}>{props.selected.name}</div>
+        {props.address && (
+          <>
+            <div className={styles.label}>Your Address : </div>
+            <div className={styles.selectedAddress}>{props.address}</div>
+          </>
+        )}
         {props.balance && (
           <>
             <div className={styles.label}>Your Balance : </div>
@@ -59,15 +78,7 @@ const Wallet = (props) => {
             borderRadius={"6px"}
             fontWeight={"700"}
             active
-            onClick={() => {
-              const add = loginPrivateKey(
-                props.selectedNetwork.value,
-                props.privateKey
-              );
-              console.log(add);
-              props.setAddress(add.address);
-              props.changeStepScreen(2);
-            }}
+            onClick={privateKeyHandler}
           >
             Login using Private Key
           </Button>
@@ -100,7 +111,13 @@ const Wallet = (props) => {
           )}
         </div>
       ) : (
-        <Transaction balance={props.balance} setBalance={props.setBalance} address={props.address} setAddress={props.setAddress} selectedNetwork={props.selectedNetwork}/>
+        <Transaction
+          balance={props.balance}
+          setBalance={props.setBalance}
+          address={props.address}
+          setAddress={props.setAddress}
+          selectedNetwork={props.selectedNetwork}
+        />
       )}
     </div>
   );

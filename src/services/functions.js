@@ -1,7 +1,6 @@
 import Web3 from "web3";
 // import axios from "axios";
 
-
 // const web3 = new Web3(keys.ropsten);
 
 export const createAccount = (key) => {
@@ -15,7 +14,7 @@ export const createAccount = (key) => {
   }
 };
 
-export const loginPrivateKey = (key,privateAddress) => {
+export const loginPrivateKey = (key, privateAddress) => {
   try {
     console.log(key);
     const web3 = new Web3(key);
@@ -26,7 +25,7 @@ export const loginPrivateKey = (key,privateAddress) => {
   }
 };
 
-export const checkBalance = async (key,address) => {
+export const checkBalance = async (key, address) => {
   try {
     console.log(key);
     const web3 = new Web3(key);
@@ -38,3 +37,18 @@ export const checkBalance = async (key,address) => {
     throw err.response;
   }
 };
+
+// export const sendEther = () => {
+//   try {
+//     var txn = {
+//       "to":,
+//       "value":,
+//       "gas":10000
+//     }
+
+
+
+//   } catch (err) {
+//     throw err.response;
+//   }
+// };
