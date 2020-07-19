@@ -59,7 +59,10 @@ const Transaction = (props) => {
           fontWeight={"700"}
           active
           onClick={async () => {
-            let balance = await checkBalance(props.address);
+            let balance = await checkBalance(
+              props.selectedNetwork.value,
+              props.address
+            );
             console.log(balance);
             props.setBalance(balance);
           }}
