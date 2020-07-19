@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import Button from "../../components/Button/Button";
 import styles from "./Transaction.module.css";
 import { checkBalance } from "../../services/functions";
 
 const Transaction = (props) => {
+
+const[newBalance, setNewBalance] = useState("")  
+const[newAddress, setNewAddress] = useState("")
   const addressHandler = (e) => {
-    props.setAddress(e.target.value);
+    setNewAddress(e.target.value);
   };
   return (
     <div className={styles.container}>
@@ -46,7 +49,7 @@ const Transaction = (props) => {
 
       <input
         onChange={addressHandler}
-        value={props.address}
+        value={newAddress}
         className={styles.input}
         placeholder="Enter Address"
       />
@@ -61,16 +64,16 @@ const Transaction = (props) => {
           onClick={async () => {
             let balance = await checkBalance(
               props.selectedNetwork.value,
-              props.address
+             newAddress
             );
             console.log(balance);
-            props.setBalance(balance);
+            setNewBalance(balance)
           }}
         >
           View balance
         </Button>
-        {props.balance && (
-          <div className={styles.balanceLabel}>{props.balance} ETH</div>
+        {newBalance && (
+          <div className={styles.balanceLabel}>{newBalance} ETH</div>
         )}
       </div>
     </div>

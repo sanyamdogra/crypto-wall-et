@@ -63,6 +63,7 @@
   position: absolute;
   right: 7%;
   top: 5%;
+  width: 15vw;
 }
 .selectedOption {
   color: #73ef62;
@@ -77,4 +78,11 @@
 }
 .label{
   margin-top: 1em;
+}
+.selectedAddress{
+  color: #73ef62;
+  font-weight: 500;
+  margin-top: 0.5em;
+  word-wrap: break-word;
+  width:100%;
 }
