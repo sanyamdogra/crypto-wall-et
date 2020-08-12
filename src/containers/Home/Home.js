@@ -40,6 +40,8 @@ const Home = () => {
             setBalance={setBalance}
             address={address}
             setAddress={setAddress}
+            privateKey={privateKey}
+            setPrivateKey={setPrivateKey}
           />
         );
 

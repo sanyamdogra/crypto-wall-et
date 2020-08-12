@@ -1,14 +1,26 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Button from "../../components/Button/Button";
 import styles from "./Transaction.module.css";
-import { checkBalance } from "../../services/functions";
+import { checkBalance, sendEther } from "../../services/functions";
 
 const Transaction = (props) => {
-
-const[newBalance, setNewBalance] = useState("")  
-const[newAddress, setNewAddress] = useState("")
+  const [newBalance, setNewBalance] = useState("");
+  const [newAddress, setNewAddress] = useState("");
+  const [toAddress, setToAddress] = useState("");
+  const [amount, setAmount] = useState("");
+  const [transactionHash, setTransactionHash] = useState("");
   const addressHandler = (e) => {
     setNewAddress(e.target.value);
+  };
+
+  const amountHandler = (e) => {
+    setAmount(e.target.value);
+    console.log(amount);
+  };
+  const toAddressHandler = (e) => {
+    setToAddress(e.target.value);
+    console.log(toAddress);
+    console.log(props.privateKey);
   };
   return (
     <div className={styles.container}>
@@ -16,14 +28,14 @@ const[newAddress, setNewAddress] = useState("")
 
       <div className={styles.label}>To: </div>
       <input
-        // onChange={privateKeyhandler}
+        onChange={toAddressHandler}
         // value={privateKey}
         className={styles.input}
         placeholder="Enter Address"
       />
       <div className={styles.label}>Amount: </div>
       <input
-        // onChange={privateKeyhandler}
+        onChange={amountHandler}
         // value={privateKey}
         className={styles.input}
         placeholder="Enter Value"
@@ -37,14 +49,27 @@ const[newAddress, setNewAddress] = useState("")
           fontWeight={"700"}
           active
           onClick={async () => {
-            // const balance = await checkBalance(address);
-            // console.log(balance);
-            // setBalance(balance);
+            console.log(
+              amount,
+              toAddress,
+              props.privateKey,
+              props.selectedNetwork.value
+            );
+            const result = await sendEther(
+              props.selectedNetwork.value,
+              toAddress,
+              amount,
+              props.privateKey
+            );
+            console.log(result);
+            setTransactionHash(result);
           }}
         >
           Send
         </Button>
       </div>
+
+      {transactionHash && <div>Your Transaction Hash : {transactionHash}</div>}
       <div className={styles.headingSub}> or maybe</div>
 
       <input
@@ -64,10 +89,10 @@ const[newAddress, setNewAddress] = useState("")
           onClick={async () => {
             let balance = await checkBalance(
               props.selectedNetwork.value,
-             newAddress
+              newAddress
             );
             console.log(balance);
-            setNewBalance(balance)
+            setNewBalance(balance);
           }}
         >
           View balance

@@ -29,3 +29,18 @@
   word-wrap: break-word;
   margin-bottom: 1em;
 }
+
+@media all and (max-width: 700px) {
+  .addressLabel{
+    font-size: 12px;
+  }
+  .privateKeyLabel{
+    font-size: 12px;
+  }
+  .address{
+    font-size: 15px;
+  }
+  .privateKey{
+    font-size: 15px;
+  }
+}

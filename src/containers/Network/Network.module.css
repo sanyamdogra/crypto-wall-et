@@ -41,13 +41,30 @@
   position: absolute;
   bottom: 5%;
 }
-.noLink{
-    text-decoration: none;
-  }
-  .buttonWrapper{
-      height: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.noLink {
+  text-decoration: none;
+}
+.buttonWrapper {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+@media all and (max-width: 700px) {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5em;
   }
+  .optionsWrapper {
+    margin: 1em;
+  }
+  .heading{
+    font-size: 25px;
+  }
+  .info{
+    bottom: 2%;
+  }
+}
