@@ -38,11 +38,10 @@
 .right {
   display: flex;
   justify-content: space-evenly;
-  position: absolute;
-  right: 5%;
+
   align-items: center;
   flex-direction: column;
-  width: 50vw;
+ 
 }
 .version {
   font-size: 14px;
@@ -50,4 +49,22 @@
 }
 .noLink{
   text-decoration: none;
+}
+
+@media all and (min-width: 700px) {
+.right{
+  position: absolute;
+  right: 5%;
+  width: 50vw;
+}
+}
+
+@media all and (max-width: 700px) {
+.bgVector{
+  display: none;
+}
+.content{
+  justify-content: center;
+}
+
 }

@@ -7,25 +7,29 @@ import Transaction from "../../containers/Transaction/Transaction";
 import { checkBalance } from "../../services/functions";
 
 const Wallet = (props) => {
-  const privateKeyhandler = (e) => {
+  const [showTransaction, setShowTransaction] = useState(false);
+  const privateKeyValueHandler = (e) => {
+    
+    let value = e.target.value
     props.setPrivateKey(e.target.value);
-    console.log(props.privateKey);
+    console.log(value);
   };
 
   const privateKeyHandler = async () => {
+    console.log(props.privateKey)
     const add = loginPrivateKey(props.selectedNetwork.value, props.privateKey);
     console.log(add);
     props.setAddress(add.address);
-    let balance = await checkBalance(
-      props.selectedNetwork.value,
-      props.address
-    );
-    console.log(balance);
-    props.setBalance(balance);
+    // let balance = await checkBalance(
+    //   props.selectedNetwork.value,
+    //   props.address
+    // );
+    // console.log(balance);
+    // props.setBalance(balance);
     setShowTransaction(true);
   };
 
-  const [showTransaction, setShowTransaction] = useState(false);
+ 
 
   return (
     <div className={styles.container}>
@@ -36,6 +40,12 @@ const Wallet = (props) => {
           <>
             <div className={styles.label}>Your Address : </div>
             <div className={styles.selectedAddress}>{props.address}</div>
+          </>
+        )}
+        {props.privateKey && (
+          <>
+            <div className={styles.label}>Your PK : </div>
+            <div className={styles.selectedAddress}>{props.privateKey}</div>
           </>
         )}
         {props.balance && (
@@ -67,7 +77,7 @@ const Wallet = (props) => {
           <div className={styles.or}>OR</div>
           <input
             className={styles.input}
-            onChange={privateKeyhandler}
+            onChange={privateKeyValueHandler}
             // value={privateKey}
             placeholder="Enter Private Key"
           />
@@ -117,6 +127,8 @@ const Wallet = (props) => {
           address={props.address}
           setAddress={props.setAddress}
           selectedNetwork={props.selectedNetwork}
+          privateKey={props.privateKey}
+          setPrivateKey={props.setPrivateKey}
         />
       )}
     </div>

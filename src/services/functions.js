@@ -38,17 +38,33 @@ export const checkBalance = async (key, address) => {
   }
 };
 
-// export const sendEther = () => {
-//   try {
-//     var txn = {
-//       "to":,
-//       "value":,
-//       "gas":10000
-//     }
+export const sendEther = (key, toAddress, amount, privateKey) => {
+  try {
+    const web3 = new Web3(key);
 
+    console.log(privateKey);
+    var txn = {
+      to: toAddress,
+      value: web3.utils.toWei(amount, "ether"),
+      gas: 100000,
+    };
 
+    let returnResult = []
 
-//   } catch (err) {
-//     throw err.response;
-//   }
-// };
+    web3.eth.accounts.signTransaction(txn, privateKey).then((result) => {
+      console.log("signed", result);
+
+      console.log(result.transactionHash);
+      returnResult.push(result.transactionHash)
+      web3.eth
+        .sendSignedTransaction(result.rawTransaction)
+        .on("reciept", (receipt) => {
+          console.log("receipt send ether:", receipt);
+        });
+    });
+
+    return returnResult;
+  } catch (err) {
+    throw err.response;
+  }
+};

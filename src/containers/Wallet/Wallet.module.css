@@ -86,3 +86,12 @@
   word-wrap: break-word;
   width:100%;
 }
+
+@media all and (max-width: 700px) {
+  .details{
+    display: none;
+  }
+  .addressWrapper{
+    width: 100vw;
+  }
+}

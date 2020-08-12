@@ -26,3 +26,16 @@
     cursor: pointer;
 }
 
+@media all and (max-width: 700px) {
+  .container{
+    height: 100px;
+    width: 100px;
+  }
+  .containerSelected{
+    height: 100px;
+    width: 100px;
+  }
+  .heading{
+    font-size: 15px;
+  }
+}
