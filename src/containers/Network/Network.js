@@ -3,14 +3,15 @@ import styles from "./Network.module.css";
 import OptionSelector from "../../components/OptionSelector/OptionSelector";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import { NETWORKS } from "../../utils/constants";
 
 const Network = (props) => {
   const displayNetworks = () =>
-    props.data.map((item, index) => (
-      <div className={styles.optionsWrapper}>
+    NETWORKS.map((item, index) => (
+      <div className={styles.optionsWrapper} key={index}>
         <OptionSelector
           heading={item.name}
-          selected={index === props.selected.index ? true : false}
+          selected={index === props.selected.index}
           onClick={() => {
             props.setSelected({
               index: index,
