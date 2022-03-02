@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createAccount, loginPrivateKey } from "../../services/functions";
 import Button from "../../components/Button/Button";
-import AddressCard from "../../components/AddressCard/AddressCard";
+import AddressCard from "../../components/AddressCard";
 import styles from "./Wallet.module.css";
 import Transaction from "../../containers/Transaction/Transaction";
 import { checkBalance } from "../../services/functions";
@@ -9,14 +9,13 @@ import { checkBalance } from "../../services/functions";
 const Wallet = (props) => {
   const [showTransaction, setShowTransaction] = useState(false);
   const privateKeyValueHandler = (e) => {
-    
-    let value = e.target.value
+    let value = e.target.value;
     props.setPrivateKey(e.target.value);
     console.log(value);
   };
 
   const privateKeyHandler = async () => {
-    console.log(props.privateKey)
+    console.log(props.privateKey);
     const add = loginPrivateKey(props.selectedNetwork.value, props.privateKey);
     console.log(add);
     props.setAddress(add.address);
@@ -28,8 +27,6 @@ const Wallet = (props) => {
     // props.setBalance(balance);
     setShowTransaction(true);
   };
-
- 
 
   return (
     <div className={styles.container}>

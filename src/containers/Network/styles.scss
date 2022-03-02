@@ -1,0 +1,85 @@
+.crypto-wallet-network {
+  background-color: #092532;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+
+  &__heading {
+    font-size: 30px;
+    color: white;
+    text-align: left;
+    font-weight: 300;
+    margin-top: 4em;
+  }
+
+  &__option-wrapper {
+    margin: 2em;
+
+    @media all and (max-width: 700px) {
+      margin: 1em;
+    }
+  }
+
+  &__details {
+    color: white;
+    position: absolute;
+    right: 7%;
+    top: 5%;
+  }
+
+  &__heading {
+    font-size: 30px;
+    color: white;
+    text-align: left;
+    font-weight: 300;
+    margin-top: 4em;
+
+    @media all and (max-width: 700px) {
+      font-size: 25px;
+    }
+  }
+
+  &__selected-option {
+    color: #73ef62;
+    font-weight: 500;
+    margin-top: 0.5em;
+  }
+
+  &__info {
+    font-size: 10px;
+    color: white;
+    float: left;
+    position: absolute;
+    bottom: 5%;
+
+    @media all and (max-width: 700px) {
+      bottom: 2%;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__button-wrapper {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2em;
+
+    @media all and (max-width: 700px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5em;
+    }
+  }
+}

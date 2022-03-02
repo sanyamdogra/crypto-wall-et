@@ -6,20 +6,13 @@ import Button from "../../components/Button/Button";
 import Wallet from "../Wallet/Wallet";
 import Transaction from "../Transaction/Transaction";
 
-const Home = () => {
-  const keys = {
-    mainnet: "https://mainnet.infura.io/v3/afb9e0010c224eabbbfbf79ab768bcfb",
-    ropsten: "https://ropsten.infura.io/v3/afb9e0010c224eabbbfbf79ab768bcfb",
-    kovan: "https://kovan.infura.io/v3/afb9e0010c224eabbbfbf79ab768bcfb",
-    rinkeby: "https://rinkeby.infura.io/v3/afb9e0010c224eabbbfbf79ab768bcfb",
-  };
+const Home: React.FC = () => {
+  const [step, setStep] = useState<number>(0);
+  const [address, setAddress] = useState<string>("");
+  const [privateKey, setPrivateKey] = useState<string>("");
+  const [balance, setBalance] = useState<string>("");
 
-  const [step, setStep] = useState(0);
-  const [address, setAddress] = useState("");
-  const [privateKey, setPrivateKey] = useState("");
-  const [balance, setBalance] = useState("");
-
-  function generateComponent(step) {
+  function generateComponent(step: number) {
     switch (step) {
       case 1:
         return (
@@ -30,7 +23,6 @@ const Home = () => {
             setAddress={setAddress}
             privateKey={privateKey}
             setPrivateKey={setPrivateKey}
-            keys={keys}
           />
         );
       case 2:
@@ -46,7 +38,7 @@ const Home = () => {
         );
 
       default:
-        return <Wallet step={step} changeStepScreen={setStep} />;
+        return <>Oops!</>;
     }
   }
 
@@ -71,9 +63,6 @@ const Home = () => {
                     borderRadius={"6px"}
                     fontWeight={"700"}
                     active
-                    // onClick={() => {
-                    //   setStep(1);
-                    // }}
                   >
                     Let's Start
                   </Button>

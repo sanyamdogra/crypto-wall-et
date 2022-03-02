@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import Home from "./Home/Home";
-import Network from "./Network/Network";
+import Home from "./Home";
+import Network from "./Network";
 import Wallet from "./Wallet/Wallet";
+
+import { InitialNetworkState } from "../models/common/types";
 
 import { INITIAL_NETWORK_STATE } from "./constants";
 
@@ -14,7 +16,9 @@ const App: React.FC = () => {
   const [address, setAddress] = useState<string>("");
   const [privateKey, setPrivateKey] = useState<string>("");
   const [balance, setBalance] = useState<string>("");
-  const [selectedNetwork, setSelectedNetwork] = useState(INITIAL_NETWORK_STATE);
+  const [selectedNetwork, setSelectedNetwork] = useState<InitialNetworkState>(
+    INITIAL_NETWORK_STATE
+  );
 
   return (
     <div className={rootClassName}>
@@ -25,8 +29,8 @@ const App: React.FC = () => {
           </Route>
           <Route exact path="/network">
             <Network
-              selected={selectedNetwork}
-              setSelected={setSelectedNetwork}
+              selectedNetwork={selectedNetwork}
+              setSelectedNetwork={setSelectedNetwork}
             />
           </Route>
           <Route exact path="/wallet">
