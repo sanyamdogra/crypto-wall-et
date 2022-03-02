@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "..";
 
 test("should load the initial api key", () => {
@@ -7,7 +7,7 @@ test("should load the initial api key", () => {
 });
 
 test("renders the crypto wallet heading", () => {
-  const { getByText } = render(<App />);
-  const headingElement = getByText(/Crypto-Wall-Et/i);
+  render(<App />);
+  const headingElement = screen.getByText(/Crypto-Wall-Et/i);
   expect(headingElement).toBeInTheDocument();
 });
